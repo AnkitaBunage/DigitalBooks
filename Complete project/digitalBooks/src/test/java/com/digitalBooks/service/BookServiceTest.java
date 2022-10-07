@@ -95,12 +95,12 @@ public class BookServiceTest {
 		
 		
 
-		List<Book> book=new ArrayList<>();
-		book.add(book1);
-		book.add(book2);
-		Mockito.when(bookRepository.findAll()).thenReturn(book);
-		List<Book> book3=service.searchBooks();
-		assertThat(book3).isEqualTo(book);
+		List<Book> bookList=new ArrayList<>();
+		bookList.add(book1);
+		bookList.add(book2);
+		Mockito.when(bookRepository.findAll()).thenReturn(bookList);
+		List<Book> returnedList=service.searchBooks();
+		assertThat(bookList).isEqualTo(returnedList);
 		
 	}
 	
@@ -154,12 +154,15 @@ public class BookServiceTest {
 	
 	
 	@Test
-	public void getPaymentById() {
+	public void getPaymentByIdTest() {
 		
 		payment.setPaymentId(1);
 		int paymentid=payment.getPaymentId();
 		when(paymentRepository.findByPaymentId(1)).thenReturn(payment);
 		Payment payser=service.getPaymentById(paymentid);
+		
+		
+		
 		assertEquals(payser,payment);
 		
 	}
@@ -198,18 +201,20 @@ public class BookServiceTest {
 		String email="anki@gmail.com";
 		 Boolean isuser = service.isUserAvailableByEmail(email);
 		 Map<String, String> payload = new HashMap<String, String>();
-		 if (isuser) {
+		
 			 int paymentid=11;
+			 if(isuser) {
              Payment payment = service.getPaymentById(paymentid);
              int bookId = payment.getBookId();
              Optional<Book> book = service.getBookByBookId(bookId);
+         	if(book.isPresent()) {
              payload.put("author", book.get().getAuthor());
              payload.put("catagory", book.get().getCategory());
              payload.put("publishedDate", book.get().getPublishedDate());
              payload.put("publisher", book.get().getPublisher());
              payload.put("title", book.get().getTitle());
              payload.put("price", String.valueOf(book.get().getPrice()));
-         }
+         	}  }
 		 Map<String, String> payload1=service.findBookByPaymentId(email, 28);
 		 assertEquals(payload1,payload);
 

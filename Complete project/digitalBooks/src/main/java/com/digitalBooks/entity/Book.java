@@ -1,6 +1,7 @@
 package com.digitalBooks.entity;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,6 +9,8 @@ import javax.persistence.Id;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.annotations.ColumnDefault;
 
 import lombok.Data;
 
@@ -20,6 +23,7 @@ public class Book {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 private int id;
 	@NotBlank
+	@Column(unique=true)
 private String title;
 	
 private String author;
@@ -28,6 +32,7 @@ private String image;
 private double price;
 
 private String publisher;
+@ColumnDefault("true")
 private boolean active;
 private boolean isBlocked;
 public String getReleaseDate() {

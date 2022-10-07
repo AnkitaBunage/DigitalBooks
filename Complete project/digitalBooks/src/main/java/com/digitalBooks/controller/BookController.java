@@ -59,25 +59,7 @@ public class BookController {
 		
 		double priceInt=Double.parseDouble(price);
 		List<Book>BooksList=bookService.findByCatagoryAndAuthorAndPriceAndPublisher(category,author,priceInt,publisher);
-//			Map<String,String>result = new HashMap<>();
-//			BooksList.forEach(Book->{
-//				result.put("author",Book.getAuthor());
-//				result.put("catagory",Book.getCategory());
-//				result.put("publishedDate",Book.getPublishedDate());
-//				result.put("publisher",Book.getPublisher());
-//				result.put("title",Book.getTitle());
-//				result.put("price",String.valueOf(Book.getPrice()));
-//				System.out.println(Book.getId());
-//				
-//			});
-//			String json = new ObjectMapper().writeValueAsString(result);
-//			System.out.println(json);
-//			System.out.println(BooksList.get(0).getId());
-//		//
-		
-//		return ResponseEntity.status(HttpStatus.OK)
-//		        .body("Book details are \n " + result);
-//		
+
 		
 			return BooksList;
 		}

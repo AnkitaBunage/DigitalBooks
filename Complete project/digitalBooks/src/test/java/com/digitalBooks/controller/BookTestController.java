@@ -1,14 +1,17 @@
 package com.digitalBooks.controller;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
 
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 import javax.validation.constraints.NotBlank;
@@ -30,6 +33,7 @@ import com.digitalBooks.service.BookService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.digitalBooks.entity.*;
+import com.digitalBooks.payload.request.UserBookRequest;
 import com.digitalBooks.payload.response.MessageResponse;
 
 @SpringBootTest
@@ -69,7 +73,7 @@ public class BookTestController {
 //    public void searchbytest()
 //    {
 //        Book book=new Book();
-//        book.setAuthor("author");
+//        book.get().setAuthor("author");
 //        when(controller.searchbooksbyauthor("author")).thenReturn(null);
 //        assertThat(bookservtest.byauthor("author"));
 //         
@@ -78,7 +82,7 @@ public class BookTestController {
 //    public void searchbybooidtest()
 //    {
 //        Book book=new Book();
-//        book.setBookID(1L);
+//        book.get().setBookID(1L);
 //        when(bookcontroller.readbookbyid(1L)).thenReturn(book);
 //        assertThat(bookservtest.byid(1L));
 //    }
@@ -132,6 +136,63 @@ assertThat(result.equals(BooksList));
     assertEquals(result,entity);
          
     }
+    
+   
+//    @Test
+//    public void buyBooksTest() {
+//    	UserBookRequest request= new UserBookRequest();
+//        request.setBookId("11");
+//        String bookid=request.getBookId();
+//        request.setEmail("anki@gmail.com");
+//        String email=request.getEmail();
+//        request.setUsername("anki");
+//        String username=request.getUsername();
+//        int bookId=Integer.parseInt(request.getBookId());
+//        when(service.isUserAvailable("siva")).thenReturn(true);
+//
+//        when(service.isBookAvailable(11)).thenReturn(true);
+//        Optional<Book> book = service.getBookByBookId(bookId);
+//        
+//        book.get().setActive(true);
+//        book.get().setAuthor("Marvel");
+//        book.get().setCategory("Finance");
+//        book.get().setContent("HHHHHHHHHHHHH");
+//        book.get().setId(11);
+//        book.get().setPrice(40);
+//        book.get().setPublisher("lhlllll");
+//        when(service.getBookByBookId(bookId)).thenReturn(book);
+//        User user = new User();
+//        user.setEmail(request.getEmail());
+//        user.setUsername(request.getUsername());
+//        user.setId(3L);
+//        Optional<User> optionalUser=Optional.of(user);
+//        when(service.getUserByName(request.getUsername())).thenReturn(optionalUser);
+//        Payment payment=new Payment();
+//        payment.setBookId(11);
+//        payment.setReaderId(3L);
+//        payment.setPaymentDate(new Date());
+//        
+//        when(service.save(payment)).thenReturn(payment);
+//        Map<String,Integer> respayload= new HashMap<String,Integer>();
+//
+//        respayload.put("pamentId", payment.getPaymentId());
+//        respayload.put("bookId", payment.getBookId());
+//        
+//    
+//            
+//    ResponseEntity responseEntity = new ResponseEntity(respayload , HttpStatus.OK);
+//
+//    ResponseEntity responseEntity1 = controller.buyBooks(request);
+//    //assertThat(responseEntity1).isEqualTo(responseEntity);
+//assertNotNull(responseEntity1);
+//    
+//    
+//    }
+    
+    
+    
+
+
 }
 
 
